@@ -130,4 +130,9 @@ export const storyBadges: StoryBadges = [
     collectionAddress: "0xdc96b7965c9CbE067359A1562D7E1F73b9809937",
     img: "punkgame.png",
   },
+  {
+    name: "Rightsfually Protection Badge",
+    collectionAddress: "0x928099c9dF3aCe2895c1870DB3c4898c17BCf609",
+    img: "rightsfually.png",
+  },
 ];
