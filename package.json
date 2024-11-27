@@ -11,13 +11,9 @@
   "dependencies": {
     "ethers": "^6.13.4",
     "next": "15.0.3",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
-    "thirdweb": "^5.71.0"
-  },
-  "resolutions": {
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "thirdweb": "^5.71.0"
   },
   "devDependencies": {
     "@types/node": "^20",
