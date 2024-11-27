@@ -125,4 +125,9 @@ export const storyBadges: StoryBadges = [
     collectionAddress: "0xF9233C09EF1d56802A23b50D5DB027781ad18F29",
     img: "jutsuworld.png",
   },
+  {
+    name: "PunkgaMe X Story Odyssey",
+    collectionAddress: "0xdc96b7965c9CbE067359A1562D7E1F73b9809937",
+    img: "punkgame.png",
+  },
 ];
