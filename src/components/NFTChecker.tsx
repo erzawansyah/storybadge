@@ -12,6 +12,7 @@ interface OwnedBadge {
     owned: boolean;
     collectionAddress: Address;
     image?: string;
+    additional?: boolean;
 }
 
 const MAIN_NFT_COLLECTION_ADDRESS: Address = '0x505097A7c6F8E97413Db0fb4d907e8982b35dce0'; // Replace with your Main NFT contract address
@@ -54,6 +55,7 @@ const NFTChecker: FC = () => {
                     owned: Number(data.balance) > 0,
                     collectionAddress: badge.collectionAddress,
                     image: badge.img,
+                    additional: badge.additional,
                 };
             });
 
@@ -76,7 +78,7 @@ const NFTChecker: FC = () => {
     const totalOwned = badges.filter((badge) => badge.owned).length;
 
     return (
-        <div>
+        <div className="p-4 md:p-8">
             {/* Input Address Form */}
             <InputAddressForm onSubmit={checkOwnership} isLoading={loading} />
 
@@ -86,7 +88,7 @@ const NFTChecker: FC = () => {
             {/* Main NFT Status */}
             <OdysseyNFT owned={odysseyNFTOwned} />
 
-            {/* Summary and Filter */}
+            {/* Summary, Filter, and Last Updated */}
             {badges.length > 0 && (
                 <div className="mt-6">
                     <div className="flex flex-col md:flex-row justify-between items-center mb-4">
@@ -127,6 +129,15 @@ const NFTChecker: FC = () => {
                             </button>
                         </div>
                     </div>
+
+                    {/* Last Updated Information */}
+                    <div className="flex justify-center md:justify-end">
+                        <p className="text-gray-400 text-sm">
+                            Last Updated:{' '}
+                            {/* last update 29/11/2024 - 23:19 GMT +7 */}
+                            <span className="text-white">29/11/2024 23:19 GMT+7</span>
+                        </p>
+                    </div>
                 </div>
             )}
 
@@ -139,8 +150,24 @@ const NFTChecker: FC = () => {
                         owned={badge.owned}
                         collectionAddress={badge.collectionAddress}
                         image={badge.image}
+                        additional={badge.additional}
                     />
                 ))}
+            </div>
+            {/* Informative Message */}
+            <div className="mt-8 text-center">
+                <p className="text-gray-400 text-sm text-center">
+                    Have minted but havent found your badge?{' '}
+                    <a
+                        href={`https://explorer.story.foundation/collections/${MAIN_NFT_COLLECTION_ADDRESS}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-600 underline"
+                    >
+                        Check on Explorer
+                    </a>
+                    .
+                </p>
             </div>
         </div>
     );

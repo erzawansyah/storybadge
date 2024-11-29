@@ -5,6 +5,7 @@ interface BadgeData {
   collectionAddress: Address;
   externalLink?: string;
   img?: string;
+  additional?: boolean;
 }
 
 type StoryBadges = BadgeData[];
@@ -134,5 +135,11 @@ export const storyBadges: StoryBadges = [
     name: "Rightsfually Protection Badge",
     collectionAddress: "0x928099c9dF3aCe2895c1870DB3c4898c17BCf609",
     img: "rightsfually.png",
+  },
+  {
+    name: "Story x OKX Odyssey Badge",
+    collectionAddress: "0xb21aF4ebde92fB3BCaB496BAE8d7c4dE362B4a42",
+    img: "okx.webp",
+    additional: true,
   },
 ];

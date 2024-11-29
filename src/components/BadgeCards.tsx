@@ -6,6 +6,7 @@ interface BadgeCardProps {
     owned: boolean;
     collectionAddress: string;
     image?: string;
+    additional?: boolean;
 }
 
 const BadgeCards: React.FC<BadgeCardProps> = ({
@@ -13,14 +14,36 @@ const BadgeCards: React.FC<BadgeCardProps> = ({
     owned,
     collectionAddress,
     image,
+    additional = false
 }) => {
     return (
         <div
-            className={`flex flex-col md:flex-row items-center w-full p-6 rounded-xl border shadow-lg transition duration-300 ${owned
+            className={`relative flex flex-col md:flex-row items-center w-full p-6 rounded-xl border shadow-lg transition duration-300 ${owned
                 ? 'bg-gradient-to-br from-green-900 via-green-800 to-black border-green-500 hover:shadow-green-500/50'
                 : 'bg-gradient-to-br from-red-900 via-red-800 to-black border-red-500 hover:shadow-red-500/50'
                 }`}
         >
+            {/* Additional Badge Indicator */}
+            {additional && (
+                <div className="absolute top-4 right-4">
+                    <div className="relative group">
+                        <span className="flex items-center justify-center w-8 h-8 bg-yellow-500 text-white text-lg font-bold rounded-full cursor-pointer">
+                            !
+                        </span>
+                        {/* Tooltip */}
+                        <div className="absolute -top-12 right-0 w-48 bg-gray-800 text-white text-sm rounded-md p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                            <div className="relative">
+                                <span>Not confirmed as a core badge</span>
+                                {/* Tooltip Arrow */}
+                                <svg className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full" width="12" height="6" viewBox="0 0 12 6" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 6L0 0H12L6 6Z" fill="#4B5563" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Badge Image or Icon */}
             <div
                 className={`flex items-center justify-center w-24 h-24 rounded-full overflow-hidden mb-4 md:mb-0 md:mr-6 ${owned
