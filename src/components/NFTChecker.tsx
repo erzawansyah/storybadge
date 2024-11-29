@@ -159,7 +159,7 @@ const NFTChecker: FC = () => {
                 <p className="text-gray-400 text-sm text-center">
                     Have minted but havent found your badge?{' '}
                     <a
-                        href={`https://explorer.story.foundation/collections/${MAIN_NFT_COLLECTION_ADDRESS}`}
+                        href={`https://odyssey.storyscan.xyz/`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-400 hover:text-blue-600 underline"
