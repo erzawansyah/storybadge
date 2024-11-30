@@ -140,6 +140,5 @@ export const storyBadges: StoryBadges = [
     name: "Story x OKX Odyssey Badge",
     collectionAddress: "0xb21aF4ebde92fB3BCaB496BAE8d7c4dE362B4a42",
     img: "okx.webp",
-    additional: true,
   },
 ];
