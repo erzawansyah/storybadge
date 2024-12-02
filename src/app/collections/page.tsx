@@ -24,10 +24,10 @@ const collections: NFTCollection[] = [
         image: "chibi-cosmos.jpg",
     },
     {
-        name: "Albedo Aliens",
-        description: "Trending NFT collection on Color. Get your hands on these unique and rare alien creatures from the Albedo galaxy!",
-        collectionAddress: "0xd96e75957D521eC7b5c1b034857D5E3bdf49f7b3",
-        image: "albedo-alien.jpg",
+        name: "I Need More F*cking IP",
+        description: "A raw depiction of creative frustration with the phrase 'I Need More Fvcking IP,' resonating with creators everywhere.",
+        collectionAddress: "0xCDf8c0C442Bc0d02E8c9F84632Ca727e56C04A38",
+        image: "i-need-more-ip.gif",
     }
 ];
 
