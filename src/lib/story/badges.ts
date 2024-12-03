@@ -137,6 +137,11 @@ export const storyBadges: StoryBadges = [
     img: "rightsfually.png",
   },
   {
+    name: "StoryHunt Badge",
+    collectionAddress: "0x22c3772f45268A68470Db15f4F73EC0310Ecac85",
+    img: "storyhunt.png",
+  },
+  {
     name: "Story x OKX Odyssey Badge",
     collectionAddress: "0xb21aF4ebde92fB3BCaB496BAE8d7c4dE362B4a42",
     img: "okx.webp",
