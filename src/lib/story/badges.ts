@@ -151,4 +151,9 @@ export const storyBadges: StoryBadges = [
     collectionAddress: "0x5B544469DcFE9AcFD56bFcf01b6E235B30153a78",
     img: "sekai.png",
   },
+  {
+    name: "Infinite Seas Badge",
+    collectionAddress: "0xefe86da2f6B78b5ba9E004e9c9279Fa7000a5441",
+    img: "infiniteseas.png",
+  },
 ];
