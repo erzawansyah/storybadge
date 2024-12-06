@@ -146,4 +146,9 @@ export const storyBadges: StoryBadges = [
     collectionAddress: "0xb21aF4ebde92fB3BCaB496BAE8d7c4dE362B4a42",
     img: "okx.webp",
   },
+  {
+    name: "Sekai Story Protocol Badge",
+    collectionAddress: "0x5B544469DcFE9AcFD56bFcf01b6E235B30153a78",
+    img: "sekai.png",
+  },
 ];
