@@ -135,7 +135,7 @@ const NFTChecker: FC = () => {
                         <p className="text-gray-400 text-sm">
                             Last Updated:{' '}
                             {/* last update 29/11/2024 - 23:19 GMT +7 */}
-                            <span className="text-white">04/12/2024 04:23 GMT+7</span>
+                            <span className="text-white">06/12/2024 20:08 GMT+7</span>
                         </p>
                     </div>
                 </div>
