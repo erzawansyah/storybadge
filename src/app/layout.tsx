@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Analytics } from '@vercel/analytics/next';
+import { ThirdwebProvider } from "thirdweb/react";
 
 
 export const metadata: Metadata = {
@@ -15,6 +15,8 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
+
+
 
 export default function RootLayout({
   children,
@@ -31,21 +33,22 @@ export default function RootLayout({
           sizes="<generated>"
         />
       </head>
-      <body
-        className={`${inter.className} bg-gradient-to-b from-black via-gray-900 to-gray-800 antialiasedn flex flex-col min-h-dvh`}
-      >
-        {/* Header */}
-        <Header />
+      <ThirdwebProvider>
+        <body
+          className={`${inter.className} bg-gradient-to-b from-black via-gray-900 to-gray-800 antialiasedn flex flex-col min-h-dvh`}
+        >
+          {/* Header */}
+          <Header />
 
-        {/* Main Content */}
-        <main className="flex-grow container mx-auto p-6">
-          {children}
-        </main>
+          {/* Main Content */}
+          <main className="flex-grow container mx-auto p-6">
+            {children}
+          </main>
 
-        {/* Footer */}
-        <Footer />
-        <Analytics />
-      </body>
+          {/* Footer */}
+          <Footer />
+        </body>
+      </ThirdwebProvider>
     </html>
   );
 }
