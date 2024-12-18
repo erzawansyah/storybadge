@@ -1,34 +1,52 @@
 'use client';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import InputAddressForm from './InputAddressForm';
 import { Address } from 'thirdweb';
-import { storyBadges } from '@/lib/story/badges';
+import { LAST_UPDATE_INFORMATION, MAIN_NFT_COLLECTION_ADDRESS, storyBadges } from '@/lib/story/config';
 import BadgeCards from './BadgeCards';
 import OdysseyNFT from '@/components/OdysseyNFT';
 import { getStoryBadgesContract } from '@/lib/thirdweb';
+import { Tables } from '@/lib/supabase/database.types';
 
 interface OwnedBadge {
     name: string;
     owned: boolean;
     collectionAddress: Address;
     image?: string;
-    additional?: boolean;
 }
 
-const MAIN_NFT_COLLECTION_ADDRESS: Address = '0x505097A7c6F8E97413Db0fb4d907e8982b35dce0'; // Replace with your Main NFT contract address
+type StoryBadges = Tables<'story_badges'>;
 
 const NFTChecker: FC = () => {
     const [errors, setErrors] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
+    const [availableBadges, setAvailableBadges] = useState<StoryBadges[]>([]);
     const [badges, setBadges] = useState<OwnedBadge[]>([]);
     const [odysseyNFTOwned, setOdysseyNFTOwned] = useState<boolean | null>(null);
     const [filter, setFilter] = useState<'all' | 'owned' | 'notOwned'>('all');
+
+    useEffect(() => {
+        storyBadges().then((data) => {
+            if (data) {
+                setAvailableBadges(data);
+            } else {
+                setErrors('Error fetching data. Please try again.');
+            }
+        });
+    }, []);
 
     const checkOwnership = async (walletAddress: Address) => {
         setLoading(true);
         setErrors(null);
         setBadges([]);
         setOdysseyNFTOwned(null);
+
+        if (!errors) {
+            setErrors(null);
+        }
+
+        const badgesDb = await storyBadges();
+        console.log(badgesDb);
 
         if (!walletAddress) {
             setErrors('Missing parameters');
@@ -48,14 +66,13 @@ const NFTChecker: FC = () => {
             setOdysseyNFTOwned(Number(OdysseyNFTData.balance) > 0);
 
             // Check Badge Ownership
-            const badgePromises = storyBadges.map(async (badge) => {
-                const data = await getStoryBadgesContract(walletAddress, badge.collectionAddress);
+            const badgePromises = availableBadges.map(async (badge) => {
+                const data = await getStoryBadgesContract(walletAddress, badge.contract_address as Address);
                 return {
                     name: badge.name,
                     owned: Number(data.balance) > 0,
-                    collectionAddress: badge.collectionAddress,
-                    image: badge.img,
-                    additional: badge.additional,
+                    collectionAddress: badge.contract_address as Address,
+                    image: badge.image_url ? badge.image_url : undefined,
                 };
             });
 
@@ -135,7 +152,7 @@ const NFTChecker: FC = () => {
                         <p className="text-gray-400 text-sm">
                             Last Updated:{' '}
                             {/* last update 29/11/2024 - 23:19 GMT +7 */}
-                            <span className="text-white">07/12/2024 04:34 GMT+7</span>
+                            <span className="text-white">{LAST_UPDATE_INFORMATION}</span>
                         </p>
                     </div>
                 </div>
@@ -150,7 +167,6 @@ const NFTChecker: FC = () => {
                         owned={badge.owned}
                         collectionAddress={badge.collectionAddress}
                         image={badge.image}
-                        additional={badge.additional}
                     />
                 ))}
             </div>
