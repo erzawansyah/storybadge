@@ -7,6 +7,8 @@ import BadgeCards from './BadgeCards';
 import OdysseyNFT from '@/components/OdysseyNFT';
 import { getStoryBadgesContract } from '@/lib/thirdweb';
 import { Tables } from '@/lib/supabase/database.types';
+import Modal from './Modal';
+import Link from 'next/link';
 
 interface OwnedBadge {
     name: string;
@@ -18,6 +20,7 @@ interface OwnedBadge {
 type StoryBadges = Tables<'story_badges'>;
 
 const NFTChecker: FC = () => {
+    const [isModalOpen, setModalOpen] = useState<boolean>(false); // Modal initial state
     const [errors, setErrors] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [availableBadges, setAvailableBadges] = useState<StoryBadges[]>([]);
@@ -25,7 +28,14 @@ const NFTChecker: FC = () => {
     const [odysseyNFTOwned, setOdysseyNFTOwned] = useState<boolean | null>(null);
     const [filter, setFilter] = useState<'all' | 'owned' | 'notOwned'>('all');
 
+    // Check sessionStorage for modal state
     useEffect(() => {
+        const modalClosed = sessionStorage.getItem('modalClosed');
+        if (!modalClosed) {
+            setTimeout(() => setModalOpen(true), 2500); // Open modal after 2.5 seconds if not closed
+        }
+
+        // Fetch badges
         storyBadges().then((data) => {
             if (data) {
                 setAvailableBadges(data);
@@ -35,18 +45,16 @@ const NFTChecker: FC = () => {
         });
     }, []);
 
+    const handleCloseModal = () => {
+        setModalOpen(false);
+        sessionStorage.setItem('modalClosed', 'true'); // Store modal closed state in sessionStorage
+    };
+
     const checkOwnership = async (walletAddress: Address) => {
         setLoading(true);
         setErrors(null);
         setBadges([]);
         setOdysseyNFTOwned(null);
-
-        if (!errors) {
-            setErrors(null);
-        }
-
-        const badgesDb = await storyBadges();
-        console.log(badgesDb);
 
         if (!walletAddress) {
             setErrors('Missing parameters');
@@ -95,7 +103,48 @@ const NFTChecker: FC = () => {
     const totalOwned = badges.filter((badge) => badge.owned).length;
 
     return (
-        <div className="p-4 md:p-8">
+        <div className="md:p-8">
+            {/* Modal Announcement */}
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                <div className="text-center space-y-6">
+                    {/* Heading */}
+                    <h4 className="text-[60px]">🎉</h4>
+                    <h2 className="text-xl md:text-2xl font-extrabold text-white">
+                        Badge Claim Event Has Ended, But the Testnet Goes On!
+                    </h2>
+
+                    {/* Description */}
+                    <p className="text-gray-200 text-sm md:text-base">
+                        The badge claim event has ended, but the Story Odyssey testnet is still ongoing. Feel free to explore the official ecosystem or check out some things I found worth trying during this phase.
+                    </p>
+
+                    {/* Buttons */}
+                    <div className="flex flex-col gap-4 justify-center">
+                        <Link
+                            href="https://www.story.foundation/ecosystem"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3 rounded-lg font-bold text-lg transition 
+                   bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white 
+                   hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600 
+                   shadow-lg hover:shadow-indigo-500/50"
+                        >
+                            Explore the Ecosystem 🌌
+                        </Link>
+                        <Link
+                            href="/activities"
+                            className="px-6 py-3 rounded-lg font-bold text-lg transition 
+                   bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white 
+                   hover:from-teal-600 hover:via-blue-600 hover:to-purple-600 
+                   shadow-lg hover:shadow-teal-500/50"
+                        >
+                            Things to Explore 🛠️
+                        </Link>
+                    </div>
+
+                </div>
+            </Modal>
+
             {/* Input Address Form */}
             <InputAddressForm onSubmit={checkOwnership} isLoading={loading} />
 
@@ -150,9 +199,7 @@ const NFTChecker: FC = () => {
                     {/* Last Updated Information */}
                     <div className="flex justify-center md:justify-end">
                         <p className="text-gray-400 text-sm">
-                            Last Updated:{' '}
-                            {/* last update 29/11/2024 - 23:19 GMT +7 */}
-                            <span className="text-white">{LAST_UPDATE_INFORMATION}</span>
+                            Last Updated: <span className="text-white">{LAST_UPDATE_INFORMATION}</span>
                         </p>
                     </div>
                 </div>
@@ -169,21 +216,6 @@ const NFTChecker: FC = () => {
                         image={badge.image}
                     />
                 ))}
-            </div>
-            {/* Informative Message */}
-            <div className="mt-8 text-center">
-                <p className="text-gray-400 text-sm text-center">
-                    Have minted but havent found your badge?{' '}
-                    <a
-                        href={`https://odyssey.storyscan.xyz/`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-600 underline"
-                    >
-                        Check on Explorer
-                    </a>
-                    .
-                </p>
             </div>
         </div>
     );
