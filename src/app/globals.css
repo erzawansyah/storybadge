@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .gradient-1 {
+    @apply bg-gradient-to-r from-blue-500 to-purple-700 hover:from-purple-600 hover:to-indigo-800;
+  }
+  .gradient-2 {
+    @apply bg-gradient-to-r from-green-500 to-teal-600 hover:from-teal-600 hover:to-blue-700;
+  }
+  .gradient-3 {
+    @apply bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-orange-600 hover:to-red-600;
+  }
+  .gradient-4 {
+    @apply bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-700 hover:to-blue-800;
+  }
+  .gradient-5 {
+    @apply bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-cyan-600 hover:to-blue-600;
+  }
+  .gradient-6 {
+    @apply bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-800 hover:to-black;
+  }
+  .gradient-1-reverse {
+    @apply bg-gradient-to-l from-blue-500 to-purple-700 hover:from-purple-600 hover:to-indigo-800;
+  }
+  .gradient-2-reverse {
+    @apply bg-gradient-to-l from-green-500 to-teal-600 hover:from-teal-600 hover:to-blue-700;
+  }
+  .gradient-3-reverse {
+    @apply bg-gradient-to-l from-yellow-500 to-orange-600 hover:from-orange-600 hover:to-red-600;
+  }
+  .gradient-4-reverse {
+    @apply bg-gradient-to-l from-purple-600 to-indigo-600 hover:from-indigo-700 hover:to-blue-800;
+  }
+  .gradient-5-reverse {
+    @apply bg-gradient-to-l from-teal-500 to-cyan-600 hover:from-cyan-600 hover:to-blue-600;
+  }
+  .gradient-6-reverse {
+    @apply bg-gradient-to-l from-gray-800 to-gray-900 hover:from-gray-800 hover:to-black;
+  }
+  .card-gradient-success {
+    @apply bg-gradient-to-br from-green-900 via-green-800 to-black border-green-500 hover:shadow-green-500/50;
+  }
+  .card-gradient-danger {
+    @apply bg-gradient-to-br from-red-900 via-red-800 to-black border-red-500 hover:shadow-red-500/50;
+  }
+  .card-gradient-loading {
+    @apply bg-gradient-to-br from-gray-900 via-gray-800 to-black border-gray-500 hover:shadow-gray-500/50;
+  }
+}

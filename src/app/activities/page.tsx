@@ -37,7 +37,7 @@ const Activities: NextPage = () => {
                         href="https://story.foundation"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 rounded-lg font-bold text-lg transition bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white hover:from-teal-600 hover:via-blue-600 hover:to-purple-600 shadow-lg hover:shadow-teal-500/50"
+                        className="px-6 py-3 rounded-lg font-bold text-lg transition gradient-4 text-white hover:gradient-4-reverse hover:shadow-teal-500/50"
                     >
                         Explore the Ecosystem 🌌
                     </Link>

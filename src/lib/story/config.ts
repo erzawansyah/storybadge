@@ -1,4 +1,4 @@
-import { Address } from "thirdweb";
+import { Address } from "viem";
 import { supabase } from "@/lib/supabase/supa-client";
 
 export const LAST_UPDATE_INFORMATION = "19/12/2024 04:13 GMT+7";

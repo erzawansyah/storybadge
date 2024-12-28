@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WagmiProvider from "@/lib/wagmi/WagmiProvider";
+import { AppContextProvider } from "@/lib/context/AppContext";
 
 
 export const metadata: Metadata = {
@@ -30,20 +32,24 @@ export default function RootLayout({
           sizes="<generated>"
         />
       </head>
-      <body
-        className={`${inter.className} bg-gradient-to-b from-black via-gray-900 to-gray-800 antialiasedn flex flex-col min-h-dvh`}
-      >
-        {/* Header */}
-        <Header />
+      <WagmiProvider>
+        <AppContextProvider>
+          <body
+            className={`${inter.className} bg-gradient-to-b from-black via-gray-900 to-gray-800 antialiasedn flex flex-col min-h-dvh`}
+          >
+            {/* Header */}
+            <Header />
 
-        {/* Main Content */}
-        <main className="flex-grow container mx-auto p-6">
-          {children}
-        </main>
+            {/* Main Content */}
+            <main className="flex-grow container mx-auto mt-16 p-6">
+              {children}
+            </main>
 
-        {/* Footer */}
-        <Footer />
-      </body>
+            {/* Footer */}
+            <Footer />
+          </body>
+        </AppContextProvider>
+      </WagmiProvider>
     </html>
   );
 }

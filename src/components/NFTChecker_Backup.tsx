@@ -1,14 +1,12 @@
 'use client';
 import { FC, useEffect, useState } from 'react';
 import InputAddressForm from './InputAddressForm';
-import { Address } from 'thirdweb';
+import { Address } from 'viem';
 import { LAST_UPDATE_INFORMATION, MAIN_NFT_COLLECTION_ADDRESS, storyBadges } from '@/lib/story/config';
-import BadgeCards from './BadgeCards';
-import OdysseyNFT from '@/components/OdysseyNFT';
-import { getStoryBadgesContract } from '@/lib/thirdweb';
+import BadgeCards from '../app/badge-tracker/_components/BadgeCards';
+import OdysseyNFT from '@/app/badge-tracker/_components/OdysseyNFT';
+import { getStoryBadgesContract } from '@/lib/wagmi/checkBadge';
 import { Tables } from '@/lib/supabase/database.types';
-import Modal from './Modal';
-import Link from 'next/link';
 
 interface OwnedBadge {
     name: string;
@@ -20,21 +18,23 @@ interface OwnedBadge {
 type StoryBadges = Tables<'story_badges'>;
 
 const NFTChecker: FC = () => {
-    const [isModalOpen, setModalOpen] = useState<boolean>(false); // Modal initial state
     const [errors, setErrors] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [availableBadges, setAvailableBadges] = useState<StoryBadges[]>([]);
-    const [badges, setBadges] = useState<OwnedBadge[]>([]);
-    const [odysseyNFTOwned, setOdysseyNFTOwned] = useState<boolean | null>(null);
+
     const [filter, setFilter] = useState<'all' | 'owned' | 'notOwned'>('all');
+    const [odysseyNFTOwned, setOdysseyNFTOwned] = useState<boolean | null>(null);
+    const [badges, setBadges] = useState<OwnedBadge[]>([]);
 
-    // Check sessionStorage for modal state
+    const initialClick = () => {
+        setLoading(true);
+        setErrors(null);
+        setBadges([]);
+        setOdysseyNFTOwned(null);
+    }
+
+    // Initial fetch of available badges for story
     useEffect(() => {
-        const modalClosed = sessionStorage.getItem('modalClosed');
-        if (!modalClosed) {
-            setTimeout(() => setModalOpen(true), 2500); // Open modal after 2.5 seconds if not closed
-        }
-
         // Fetch badges
         storyBadges().then((data) => {
             if (data) {
@@ -45,16 +45,8 @@ const NFTChecker: FC = () => {
         });
     }, []);
 
-    const handleCloseModal = () => {
-        setModalOpen(false);
-        sessionStorage.setItem('modalClosed', 'true'); // Store modal closed state in sessionStorage
-    };
-
     const checkOwnership = async (walletAddress: Address) => {
-        setLoading(true);
-        setErrors(null);
-        setBadges([]);
-        setOdysseyNFTOwned(null);
+        initialClick();
 
         if (!walletAddress) {
             setErrors('Missing parameters');
@@ -103,48 +95,7 @@ const NFTChecker: FC = () => {
     const totalOwned = badges.filter((badge) => badge.owned).length;
 
     return (
-        <div className="md:p-8">
-            {/* Modal Announcement */}
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                <div className="text-center space-y-6">
-                    {/* Heading */}
-                    <h4 className="text-[60px]">🎉</h4>
-                    <h2 className="text-xl md:text-2xl font-extrabold text-white">
-                        Badge Claim Event Has Ended, But the Testnet Goes On!
-                    </h2>
-
-                    {/* Description */}
-                    <p className="text-gray-200 text-sm md:text-base">
-                        The badge claim event has ended, but the Story Odyssey testnet is still ongoing. Feel free to explore the official ecosystem or check out some things I found worth trying during this phase.
-                    </p>
-
-                    {/* Buttons */}
-                    <div className="flex flex-col gap-4 justify-center">
-                        <Link
-                            href="https://www.story.foundation/ecosystem"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-6 py-3 rounded-lg font-bold text-lg transition 
-                   bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white 
-                   hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600 
-                   shadow-lg hover:shadow-indigo-500/50"
-                        >
-                            Explore the Ecosystem 🌌
-                        </Link>
-                        <Link
-                            href="/activities"
-                            className="px-6 py-3 rounded-lg font-bold text-lg transition 
-                   bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white 
-                   hover:from-teal-600 hover:via-blue-600 hover:to-purple-600 
-                   shadow-lg hover:shadow-teal-500/50"
-                        >
-                            Things to Explore 🛠️
-                        </Link>
-                    </div>
-
-                </div>
-            </Modal>
-
+        <div>
             {/* Input Address Form */}
             <InputAddressForm onSubmit={checkOwnership} isLoading={loading} />
 
@@ -167,6 +118,7 @@ const NFTChecker: FC = () => {
                         {/* Filter */}
                         <div className="flex gap-4 mt-4 md:mt-0">
                             <button
+                                type='button'
                                 onClick={() => setFilter('all')}
                                 className={`px-4 py-2 rounded-lg transition ${filter === 'all'
                                     ? 'bg-blue-500 text-white'
@@ -176,6 +128,7 @@ const NFTChecker: FC = () => {
                                 All
                             </button>
                             <button
+                                type='button'
                                 onClick={() => setFilter('owned')}
                                 className={`px-4 py-2 rounded-lg transition ${filter === 'owned'
                                     ? 'bg-green-500 text-white'
@@ -185,6 +138,7 @@ const NFTChecker: FC = () => {
                                 Owned <span className="text-white">({totalOwned})</span>
                             </button>
                             <button
+                                type='button'
                                 onClick={() => setFilter('notOwned')}
                                 className={`px-4 py-2 rounded-lg transition ${filter === 'notOwned'
                                     ? 'bg-red-500 text-white'

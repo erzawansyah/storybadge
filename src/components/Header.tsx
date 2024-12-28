@@ -5,8 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const internalLinks = [
-    { name: "Checker", href: "/", hidden: false },
-    { name: "Activities", href: "/activities", hidden: false },
+    { name: "Home", href: "/", hidden: false },
+    { name: "Badge Tracker", href: "/badge-tracker", hidden: false },
+    { name: "On Chain Activities", href: "/activities", hidden: false },
 ];
 
 const ecosystemLinks = "https://story.foundation/ecosystem";
@@ -15,16 +16,17 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <header className="bg-gray-900 border-b border-gray-700 py-4">
+        <header className="fixed top-0 right-0 w-full z-50 py-4">
             <div className="container mx-auto flex justify-between items-center px-4">
                 {/* Logo */}
                 <Link
                     onClick={() => setIsMenuOpen(false)}
                     href="/"
-                    className="flex items-center text-2xl font-bold text-white"
+                    className="flex items-end text-2xl md:text-4xl font-semibold text-white"
                 >
-                    <Image src="/favicon.png" alt="Logo" width={50} height={50} />
-                    <span className="ml-2">Odyssey Check</span>
+                    [M.E.W] <span className="ml-2 text-base md:text-xl font-normal text-gray-400">
+                        on Story
+                    </span>
                 </Link>
 
                 {/* Hamburger Menu (Mobile) */}
