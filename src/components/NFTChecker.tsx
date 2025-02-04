@@ -124,16 +124,23 @@ const NFTChecker: FC = () => {
         <div className="grid grid-cols-1 gap-8 p-4 md:p-8">
             {/* Modal Announcement */}
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                <div className="text-center space-y-6">
+                <div className="text-center space-y-2 bg-gradient-to-br rounded-xl">
                     {/* Heading */}
-                    <h4 className="text-[60px]">🎉</h4>
-                    <h2 className="text-xl md:text-2xl font-extrabold text-white">
-                        Badge Claim Event Has Ended, But the Testnet Goes On!
+                    <h4 className="text-[60px]">🚀</h4>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-snug">
+                        Odyssey Testnet Is Coming to an End — A New Chapter Begins!
                     </h2>
 
                     {/* Description */}
-                    <p className="text-gray-200 text-sm md:text-base">
-                        The badge claim event has ended, but the Story Odyssey testnet is still ongoing. Feel free to explore the official ecosystem or check out some things I found worth trying during this phase.
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                        The <strong>Odyssey Testnet</strong> will officially end on <strong>February 15, 2025</strong>.
+                        But this isn’t the end—it’s the beginning of a new journey with the <strong>Aeneid Testnet</strong>
+                        just around the corner.
+                    </p>
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                        Meanwhile, the countdown to <strong>Mainnet Launch</strong> has already begun.
+                        Development for the mainnet is in progress, and we're getting closer than ever to
+                        the public release. Stay curious, keep exploring, and be part of this evolving ecosystem!
                     </p>
 
                     {/* Buttons */}
@@ -143,24 +150,25 @@ const NFTChecker: FC = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-6 py-3 rounded-lg font-bold text-lg transition 
-                  bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white 
-                  hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600 
-                  shadow-lg hover:shadow-indigo-500/50"
+                    bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white 
+                    hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600 
+                    shadow-lg hover:shadow-indigo-500/50"
                         >
                             Explore the Ecosystem 🌌
                         </Link>
                         <Link
                             href="/activities"
                             className="px-6 py-3 rounded-lg font-bold text-lg transition 
-                  bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white 
-                  hover:from-teal-600 hover:via-blue-600 hover:to-purple-600 
-                  shadow-lg hover:shadow-teal-500/50"
+                    bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white 
+                    hover:from-teal-600 hover:via-blue-600 hover:to-purple-600 
+                    shadow-lg hover:shadow-teal-500/50"
                         >
                             Things to Explore 🛠️
                         </Link>
                     </div>
                 </div>
             </Modal>
+
 
             {/* Input Address Form */}
             <InputAddressForm onSubmit={checkOwnership} isLoading={loading} />
