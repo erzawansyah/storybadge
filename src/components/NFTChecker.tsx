@@ -139,7 +139,7 @@ const NFTChecker: FC = () => {
                     </p>
                     <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                         Meanwhile, the countdown to <strong>Mainnet Launch</strong> has already begun.
-                        Development for the mainnet is in progress, and we're getting closer than ever to
+                        Development for the mainnet is in progress, and we&apos;re getting closer than ever to
                         the public release. Stay curious, keep exploring, and be part of this evolving ecosystem!
                     </p>
 
