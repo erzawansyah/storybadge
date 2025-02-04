@@ -43,7 +43,7 @@ const CIPCNFT: FC<CIPCNFTProps> = ({ owned }) => {
                     <p className="text-sm md:text-base text-gray-300 mt-2 leading-relaxed">
                         <strong>Congratulations!</strong> You hold the <em>{nftName}</em>. 
                         The sign-up event officially ended on <strong>February 3, 2025</strong>, 
-                        so you're part of a special group. As mainnet approaches, 
+                        so you&apos;re part of a special group. As mainnet approaches, 
                         keep exploring the <strong>Story Protocol</strong> ecosystem 
                         to discover all it has to offer!
                     </p>
@@ -51,8 +51,8 @@ const CIPCNFT: FC<CIPCNFTProps> = ({ owned }) => {
                     <p className="text-sm md:text-base text-gray-300 mt-2 leading-relaxed">
                         The sign-up event for the <em>{nftName}</em> ended on 
                         <strong> February 3, 2025</strong>. While this NFT is no longer claimable, 
-                        there's still plenty to explore in the <strong>Story Protocol</strong> ecosystem. 
-                        Dive deeper, stay informed, and get ready for what's coming next as mainnet draws near!
+                        there&apos;s still plenty to explore in the <strong>Story Protocol</strong> ecosystem. 
+                        Dive deeper, stay informed, and get ready for what&apos;s coming next as mainnet draws near!
                     </p>
                 )}
 
