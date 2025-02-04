@@ -2,13 +2,13 @@
 import { FC, useEffect, useState } from 'react';
 import InputAddressForm from './InputAddressForm';
 import { Address } from 'thirdweb';
-import { LAST_UPDATE_INFORMATION, MAIN_NFT_COLLECTION_ADDRESS, storyBadges } from '@/lib/story/config';
+import { LAST_UPDATE_INFORMATION, MAIN_NFT_COLLECTION_ADDRESS, ODYSSEY_COMMEMORATIVE_IP_COMMUNITY_NFT, storyBadges } from '@/lib/story/config';
 import BadgeCards from './BadgeCards';
 import OdysseyNFT from '@/components/OdysseyNFT';
 import { getStoryBadgesContract } from '@/lib/thirdweb';
-import { Tables } from '@/lib/supabase/database.types';
 import Modal from './Modal';
 import Link from 'next/link';
+import CIPCNFT from './CommunityNFT';
 
 interface OwnedBadge {
     name: string;
@@ -17,7 +17,12 @@ interface OwnedBadge {
     image?: string;
 }
 
-type StoryBadges = Tables<'story_badges'>;
+interface StoryBadges {
+    contract_address: string;
+    id: number;
+    image_url: string | null;
+    name: string;
+}
 
 const NFTChecker: FC = () => {
     const [isModalOpen, setModalOpen] = useState<boolean>(false); // Modal initial state
@@ -26,6 +31,7 @@ const NFTChecker: FC = () => {
     const [availableBadges, setAvailableBadges] = useState<StoryBadges[]>([]);
     const [badges, setBadges] = useState<OwnedBadge[]>([]);
     const [odysseyNFTOwned, setOdysseyNFTOwned] = useState<boolean | null>(null);
+    const [ipCommunityNft, setIpCommunityNft] = useState<boolean | null>(null);
     const [filter, setFilter] = useState<'all' | 'owned' | 'notOwned'>('all');
 
     // Check sessionStorage for modal state
@@ -37,7 +43,7 @@ const NFTChecker: FC = () => {
 
         // Fetch badges
         storyBadges().then((data) => {
-            console.log(data)
+            console.log(data);
             if (data) {
                 setAvailableBadges(data);
             } else {
@@ -56,6 +62,7 @@ const NFTChecker: FC = () => {
         setErrors(null);
         setBadges([]);
         setOdysseyNFTOwned(null);
+        setIpCommunityNft(null);
 
         if (!walletAddress) {
             setErrors('Missing parameters');
@@ -73,6 +80,10 @@ const NFTChecker: FC = () => {
             // Check Main NFT Ownership
             const OdysseyNFTData = await getStoryBadgesContract(walletAddress, MAIN_NFT_COLLECTION_ADDRESS);
             setOdysseyNFTOwned(Number(OdysseyNFTData.balance) > 0);
+
+            // Check Commemorative IP Community NFT
+            const IpCommunityNft = await getStoryBadgesContract(walletAddress, ODYSSEY_COMMEMORATIVE_IP_COMMUNITY_NFT);
+            setIpCommunityNft(Number(IpCommunityNft.balance) > 0);
 
             // Check Badge Ownership
             const badgePromises = availableBadges.map(async (badge) => {
@@ -104,7 +115,13 @@ const NFTChecker: FC = () => {
     const totalOwned = badges.filter((badge) => badge.owned).length;
 
     return (
-        <div className="md:p-8">
+        /* 
+          Ubah layout utama menjadi grid:
+          - grid-cols-1: Satu kolom di mobile
+          - md:grid-cols-1: Bisa tetap satu kolom juga di tablet, silakan ubah sesuai keinginan
+          - gap-8: Jarak antar elemen grid
+        */
+        <div className="grid grid-cols-1 gap-8 p-4 md:p-8">
             {/* Modal Announcement */}
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
                 <div className="text-center space-y-6">
@@ -126,23 +143,22 @@ const NFTChecker: FC = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-6 py-3 rounded-lg font-bold text-lg transition 
-                   bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white 
-                   hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600 
-                   shadow-lg hover:shadow-indigo-500/50"
+                  bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white 
+                  hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600 
+                  shadow-lg hover:shadow-indigo-500/50"
                         >
                             Explore the Ecosystem 🌌
                         </Link>
                         <Link
                             href="/activities"
                             className="px-6 py-3 rounded-lg font-bold text-lg transition 
-                   bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white 
-                   hover:from-teal-600 hover:via-blue-600 hover:to-purple-600 
-                   shadow-lg hover:shadow-teal-500/50"
+                  bg-gradient-to-r from-green-500 via-teal-500 to-blue-500 text-white 
+                  hover:from-teal-600 hover:via-blue-600 hover:to-purple-600 
+                  shadow-lg hover:shadow-teal-500/50"
                         >
                             Things to Explore 🛠️
                         </Link>
                     </div>
-
                 </div>
             </Modal>
 
@@ -150,14 +166,17 @@ const NFTChecker: FC = () => {
             <InputAddressForm onSubmit={checkOwnership} isLoading={loading} />
 
             {/* Error Message */}
-            {errors && <p className="text-red-500 mt-4">{errors}</p>}
+            {errors && <p className="text-red-500">{errors}</p>}
 
             {/* Main NFT Status */}
             <OdysseyNFT owned={odysseyNFTOwned} />
 
+            {/* Commemorative IP Community NFT */}
+            <CIPCNFT owned={ipCommunityNft} />
+
             {/* Summary, Filter, and Last Updated */}
             {badges.length > 0 && (
-                <div className="mt-6">
+                <div>
                     <div className="flex flex-col md:flex-row justify-between items-center mb-4">
                         {/* Summary */}
                         <p className="text-white text-lg">
@@ -206,18 +225,21 @@ const NFTChecker: FC = () => {
                 </div>
             )}
 
-            {/* Badge Cards */}
-            <div className="flex flex-col md:flex-row flex-wrap gap-4 pt-4">
-                {filteredBadges.map((badge, index) => (
-                    <BadgeCards
-                        key={index}
-                        name={badge.name}
-                        owned={badge.owned}
-                        collectionAddress={badge.collectionAddress}
-                        image={badge.image}
-                    />
-                ))}
-            </div>
+            {/* Badge Cards => grid 2 kolom di mobile, 3 kolom di tablet, 4 kolom di desktop */}
+            {badges.length > 0 && (
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 pt-4">
+                    {filteredBadges.map((badge, index) => (
+                        <BadgeCards
+                            key={index}
+                            name={badge.name}
+                            owned={badge.owned}
+                            collectionAddress={badge.collectionAddress}
+                            image={badge.image}
+                        />
+                    ))}
+                </div>
+            )}
+
         </div>
     );
 };

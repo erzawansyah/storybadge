@@ -15,63 +15,53 @@ const BadgeCards: React.FC<BadgeCardProps> = ({
     collectionAddress,
     image,
 }) => {
-    // Fungsi untuk menyalin alamat ke clipboard
-
     return (
         <div
-            className={`relative flex flex-col md:flex-row items-center w-full p-6 rounded-xl border shadow-lg transition duration-300 ${owned
-                ? 'bg-gradient-to-br from-green-900 via-green-800 to-black border-green-500 hover:shadow-green-500/50'
-                : 'bg-gradient-to-br from-red-900 via-red-800 to-black border-red-500 hover:shadow-red-500/50'
-                }`}
+            className={`relative group p-4 rounded-xl border shadow-md text-white overflow-hidden 
+            transition-transform duration-300 hover:scale-105
+            ${owned ? 'bg-green-900/80 border-green-500' : 'bg-red-900/80 border-red-500'}`}
         >
-            {/* Badge Image or Icon */}
-            <div
-                className={`hover-zoom flex items-center justify-center w-32 h-32 md:w-24 md:h-24  rounded-full overflow-hidden mb-4 md:mb-0 md:mr-6 ${owned
-                    ? 'bg-gradient-to-br from-gray-400 to-green-400'
-                    : 'bg-gradient-to-br from-gray-400 to-red-400'
-                    }`}
-            >
+            {/* Gambar Badge - diperbesar */}
+            <div className="mx-auto mb-3 w-32 h-32 md:w-40 md:h-40 relative flex items-center justify-center">
                 {image ? (
-                    <div className="relative w-full h-full hover-zoom">
+                    <div className="max-w-64 h-64">
                         <Image
-                            src={image || "/default-badge.png"}
+                            src={image}
                             alt={name}
                             fill
-                            sizes="100px"
-                            className="rounded-full object-cover transition-transform duration-300 hover:scale-110"
+                            className="object-cover rounded-full transition-transform duration-300 group-hover:scale-110"
                         />
                     </div>
                 ) : (
-                    <span className="text-white text-3xl font-bold">
-                        {name.charAt(0).toUpperCase()}
-                    </span>
+                    <div className="w-full h-full rounded-full flex items-center justify-center bg-gray-700">
+                        <span className="text-4xl font-bold">
+                            {name.charAt(0).toUpperCase()}
+                        </span>
+                    </div>
                 )}
             </div>
 
-            {/* Badge Details */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left flex-grow">
-                {/* Badge Name */}
-                <h3 className="text-2xl font-semibold mb-2">{name}</h3>
+            {/* Nama Badge (font lebih kecil) */}
+            <h3 className="text-sm md:text-base font-semibold text-center">{name}</h3>
 
-                {/* Ownership Status */}
-                <p
-                    className={`text-lg font-medium ${owned ? 'text-green-400' : 'text-red-400'
-                        }`}
+            {/* Status kepemilikan (owned / not owned) */}
+            <p
+                className={`mt-1 text-xs md:text-sm font-medium text-center 
+                ${owned ? 'text-green-300' : 'text-red-300'}`}
+            >
+                {owned ? 'Owned' : 'Not Owned'}
+            </p>
+
+            {/* Link ke Explorer */}
+            <div className="flex justify-center mt-2">
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`https://explorer.story.foundation/collections/${collectionAddress}`}
+                    className="text-blue-400 hover:text-blue-600 underline text-xs md:text-sm transition-colors"
                 >
-                    {owned ? 'Owned' : 'Not Owned'}
-                </p>
-
-                {/* Collection Address with Copy Feature */}
-                <div className="flex items-center mt-4">
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={`https://explorer.story.foundation/collections/${collectionAddress}`}
-                        className="text-blue-400 hover:text-blue-600 underline transition duration-300"
-                    >
-                        See on Explorer
-                    </a>
-                </div>
+                    See on Explorer
+                </a>
             </div>
         </div>
     );

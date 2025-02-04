@@ -6,7 +6,7 @@ const Home: NextPage = () => {
     <div className="text-white py-10 flex flex-col items-center">
       {/* Header */}
       {/* NFT Checker */}
-      <div className="w-full max-w-2xl hover:shadow-neon transition duration-300">
+      <div className="w-full max-w-4xl hover:shadow-neon transition duration-300">
         <h1 className="text-3xl font-extrabold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
           Story Badge Checker
         </h1>
