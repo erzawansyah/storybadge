@@ -1,0 +1,176 @@
+[
+    {
+        "id": 1,
+        "name": "Wand Protocol",
+        "contract_address": "0xfe5c197BAa5eD96a8A99689Be1A7F7b941E58Dd3",
+        "image_url": "/badges_images/wand.png"
+    },
+    {
+        "id": 2,
+        "name": "D3X",
+        "contract_address": "0x1Ce5AA796437A0fDD0127419a8517EfbD87aadF5",
+        "image_url": "/badges_images/d3x.png"
+    },
+    {
+        "id": 4,
+        "name": "Satori Badge",
+        "contract_address": "0xCD62DbCB84Fcf7837FC813139A0D8F25b54033D9",
+        "image_url": "/badges_images/satori.png"
+    },
+    {
+        "id": 5,
+        "name": "Solo",
+        "contract_address": "0x7ab31e9355e821629D19F6Dcd3a3a45AF674D67E",
+        "image_url": "/badges_images/solo.webp"
+    },
+    {
+        "id": 6,
+        "name": "Color",
+        "contract_address": "0xA9f7E75cBA8222A9096d50568FD001fB966cA4Cd",
+        "image_url": "/badges_images/color.png"
+    },
+    {
+        "id": 7,
+        "name": "Playarts",
+        "contract_address": "0x05a88df85657109A7675490A38f51C5425827beB",
+        "image_url": "/badges_images/playarts.webp"
+    },
+    {
+        "id": 8,
+        "name": "Mahojin IP-Badge",
+        "contract_address": "0x3Eb5Ebaf49512ef134470263Dc4b04732dcEF4Bf",
+        "image_url": "/badges_images/mahojin.png"
+    },
+    {
+        "id": 9,
+        "name": "1Combo Story Badge",
+        "contract_address": "0x5884F2396A8D5978b6A9fEC42a39ACF01A00C665",
+        "image_url": "/badges_images/1combo.png"
+    },
+    {
+        "id": 10,
+        "name": "Blockbook Badge",
+        "contract_address": "0x916D9366dCC642D45075C7a62daef00b14A7460f",
+        "image_url": "/badges_images/blockbook.png"
+    },
+    {
+        "id": 11,
+        "name": "Impossible Finance Testnet Badge",
+        "contract_address": "0x2323AFf23019Dc366e4446172A983E828338A06B",
+        "image_url": "/badges_images/impossible.png"
+    },
+    {
+        "id": 12,
+        "name": "Unleash Protocol Badge",
+        "contract_address": "0x8ef46be5E622e16068d971581F06e5c9c0f6b6FA",
+        "image_url": "/badges_images/unleash.svg"
+    },
+    {
+        "id": 13,
+        "name": "Spotlight Odyssey Badge",
+        "contract_address": "0x605957BBC1A828D7883731d156E5D49DF173ce1D",
+        "image_url": "/badges_images/spotlight.png"
+    },
+    {
+        "id": 14,
+        "name": "Standard Story Badge",
+        "contract_address": "0xBB68C1d95922c491f280F1425D9Aac32635F08C3",
+        "image_url": "/badges_images/standard.png"
+    },
+    {
+        "id": 15,
+        "name": "PiperX Odyssey Test Badge",
+        "contract_address": "0x3038b1E8C67AF1225aadbb3136aaa7C32B18A539",
+        "image_url": "/badges_images/piperx.png"
+    },
+    {
+        "id": 16,
+        "name": "Verio Badge",
+        "contract_address": "0x5B70682BDF31B29e6341CDE8961e9D65eA818bDd",
+        "image_url": "/badges_images/verio.png"
+    },
+    {
+        "id": 17,
+        "name": "Singular IP-Badge",
+        "contract_address": "0xf555b1f3E555172711C9C75182F855E0b0774b09",
+        "image_url": "/badges_images/singular.png"
+    },
+    {
+        "id": 18,
+        "name": "Styreal x Story Odyssey",
+        "contract_address": "0x22Da4cBdd97548AEF478E8f2FF5c7eEAe6E540fB",
+        "image_url": "/badges_images/styreal.png"
+    },
+    {
+        "id": 19,
+        "name": "Globkins Badges",
+        "contract_address": "0x9a1dD2a41b6173168216d1c7521402C71365813f",
+        "image_url": "/badges_images/globkins.png"
+    },
+    {
+        "id": 20,
+        "name": "Koni Story",
+        "contract_address": "0x71c8F1F9407CC2504a8025cbF600f8A7E6BeA21a",
+        "image_url": "/badges_images/koni.png"
+    },
+    {
+        "id": 21,
+        "name": "Poster Badge",
+        "contract_address": "0x88908e22d1249827Ab4c6bdebBdEcf577FCAA218",
+        "image_url": "/badges_images/poster.png"
+    },
+    {
+        "id": 22,
+        "name": "Mycelium Badge",
+        "contract_address": "0xF015EaCF4879B01CE63713373Ef9846d22b291d0",
+        "image_url": "/badges_images/mycelium.png"
+    },
+    {
+        "id": 23,
+        "name": "JutsuWorld X Story Odyssey",
+        "contract_address": "0xF9233C09EF1d56802A23b50D5DB027781ad18F29",
+        "image_url": "/badges_images/jutsuworld.png"
+    },
+    {
+        "id": 24,
+        "name": "PunkgaMe X Story Odyssey",
+        "contract_address": "0xdc96b7965c9CbE067359A1562D7E1F73b9809937",
+        "image_url": "/badges_images/punkgame.png"
+    },
+    {
+        "id": 25,
+        "name": "Rightsfually Protection Badge",
+        "contract_address": "0x928099c9dF3aCe2895c1870DB3c4898c17BCf609",
+        "image_url": "/badges_images/rightsfually.png"
+    },
+    {
+        "id": 26,
+        "name": "StoryHunt Badge",
+        "contract_address": "0x22c3772f45268A68470Db15f4F73EC0310Ecac85",
+        "image_url": "/badges_images/storyhunt.png"
+    },
+    {
+        "id": 27,
+        "name": "Story x OKX Odyssey Badge",
+        "contract_address": "0xb21aF4ebde92fB3BCaB496BAE8d7c4dE362B4a42",
+        "image_url": "/badges_images/okx.webp"
+    },
+    {
+        "id": 28,
+        "name": "Sekai Story Protocol Badge",
+        "contract_address": "0x5B544469DcFE9AcFD56bFcf01b6E235B30153a78",
+        "image_url": "/badges_images/sekai.png"
+    },
+    {
+        "id": 29,
+        "name": "Infinite Seas Badge",
+        "contract_address": "0xefe86da2f6B78b5ba9E004e9c9279Fa7000a5441",
+        "image_url": "/badges_images/infiniteseas.png"
+    },
+    {
+        "id": 30,
+        "name": "Ablo Odyssey Badge",
+        "contract_address": "0x5b6B76fE77F1F0e273D5156Fe405E2CedE175C44",
+        "image_url": "/badges_images/ablo.png"
+    }
+]

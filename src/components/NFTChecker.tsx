@@ -37,6 +37,7 @@ const NFTChecker: FC = () => {
 
         // Fetch badges
         storyBadges().then((data) => {
+            console.log(data)
             if (data) {
                 setAvailableBadges(data);
             } else {
