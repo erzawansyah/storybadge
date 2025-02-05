@@ -133,8 +133,8 @@ const NFTChecker: FC = () => {
 
                     {/* Description */}
                     <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                        The <strong>Odyssey Testnet</strong> will officially end on <strong>February 15, 2025</strong>.
-                        But this isn&apos;t the end—it&apos;s the beginning of a new journey with the <strong>Aeneid Testnet</strong>
+                        The <strong>Odyssey Testnet</strong> will officially end on mid February.{" "}
+                        But this isn&apos;t the end—it&apos;s the beginning of a new journey with the <strong>Aeneid Testnet</strong> {" "}
                         just around the corner.
                     </p>
                     <p className="text-gray-300 text-sm md:text-base leading-relaxed">
@@ -193,7 +193,7 @@ const NFTChecker: FC = () => {
                         </p>
 
                         {/* Filter */}
-                        <div className="flex gap-4 mt-4 md:mt-0">
+                        <div className="flex gap-4 mt-4 md:mt-0 text-xs md:text-small lg:text-base">
                             <button
                                 onClick={() => setFilter('all')}
                                 className={`px-4 py-2 rounded-lg transition ${filter === 'all'

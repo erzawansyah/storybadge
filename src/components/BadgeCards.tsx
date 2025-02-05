@@ -17,19 +17,19 @@ const BadgeCards: React.FC<BadgeCardProps> = ({
 }) => {
     return (
         <div
-            className={`relative group p-4 rounded-xl border shadow-md text-white overflow-hidden 
+            className={`relative group p-3 md:p-4 rounded-xl border shadow-md text-white overflow-hidden 
             transition-transform duration-300 hover:scale-105
             ${owned ? 'bg-green-900/80 border-green-500' : 'bg-red-900/80 border-red-500'}`}
         >
             {/* Gambar Badge - diperbesar */}
-            <div className="mx-auto mb-3 w-32 h-32 md:w-40 md:h-40 relative flex items-center justify-center">
+            <div className="mx-auto mb-2 max-w-32 max-h-32 md:max-w-40 md:max-h-40 relative flex items-center justify-center">
                 {image ? (
                     <div className="max-w-64 h-64">
                         <Image
                             src={image}
                             alt={name}
                             fill
-                            className="object-cover rounded-full transition-transform duration-300 group-hover:scale-110"
+                            className="aspect-square object-contain rounded-full transition-transform duration-300 group-hover:scale-110"
                         />
                     </div>
                 ) : (
