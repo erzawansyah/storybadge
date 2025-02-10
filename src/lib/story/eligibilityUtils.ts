@@ -59,8 +59,8 @@ const eligibilityMessages: { [key: number]: EligibilityMessage } = {
     8: {
         id: 8,
         status: true,
-        message: "🌟 You are **eligible** to express your appreciation to @Lee from Story Protocol! 🫶 Nothing is stopping you from sending some love! ❤️",
-        tweet_content: "I’m eligible to send appreciation to @Lee from @StoryProtocol! Lee, you’re awesome! ❤️",
+        message: "🌟 You are **eligible** to express your appreciation to Lee from Story Protocol! 🫶 Nothing is stopping you from sending some love! ❤️",
+        tweet_content: "I’m eligible to send appreciation to @storysylee from @StoryProtocol! Lee, you’re awesome! ❤️",
         image: "/drop/images/8.jpg"
     },
     9: {
