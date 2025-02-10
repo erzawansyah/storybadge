@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { truncateSync } from "node:fs";
 
 const internalLinks = [
     { name: "Checker", href: "/", hidden: false },
-    { name: "Activities", href: "/activities", hidden: false },
+    // { name: "Activities", href: "/activities", hidden: false },
+    { name: "Eligibility Checker", href: "/drop", hidden: truncateSync }
 ];
 
 const ecosystemLinks = "https://story.foundation/ecosystem";
