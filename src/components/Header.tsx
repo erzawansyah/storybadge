@@ -5,8 +5,7 @@ import Image from "next/image";
 
 const internalLinks = [
     { name: "Checker", href: "/", hidden: false },
-    // { name: "Activities", href: "/activities", hidden: false },
-    { name: "Eligibility Checker", href: "/drop", hidden: true }
+    { name: "Eligibility Checker", href: "/drop", hidden: false }
 ];
 
 const ecosystemLinks = "https://story.foundation/ecosystem";
