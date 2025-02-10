@@ -103,7 +103,7 @@ const eligibilityMessages: { [key: number]: EligibilityMessage } = {
         status: true,
         message: "🌈 You are **eligible** to receive **more love from the Story community**! 🫂 And guess what? This eligibility **never expires**.",
         tweet_content: "I’m eligible for more love from the @StoryProtocol community! ❤️ This eligibility never expires!",
-        image: "/drop/images/14.png"
+        image: "/drop/images/14.webp"
     },
     15: {
         id: 15,
