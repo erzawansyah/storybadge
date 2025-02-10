@@ -4,17 +4,11 @@ import Image from "next/image";
 import { EligibilityMessage } from "@/lib/story/eligibilityUtils";
 import Markdown from "react-markdown";
 
-const EligibilityResult: FC<EligibilityMessage> = ({ id, status, message, tweet_content, image }) => {
-  const [_, setGlitchText] = useState("Processing...");
+const EligibilityResult: FC<EligibilityMessage> = ({ status, message, tweet_content, image }) => {
   const [finalResult, setFinalResult] = useState<string | null>(null);
   
   useEffect(() => {
-    const interval = setInterval(() => {
-      setGlitchText(`Eligibility: ${Math.floor(Math.random() * 9) + 1}`);
-    }, 150);
-
     setTimeout(() => {
-      clearInterval(interval);
       setFinalResult(message);
     }, 500);
   }, [message]);
