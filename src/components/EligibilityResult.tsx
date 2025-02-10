@@ -5,15 +5,11 @@ import { EligibilityMessage } from "@/lib/story/eligibilityUtils";
 import Markdown from "react-markdown";
 
 const EligibilityResult: FC<EligibilityMessage> = ({ id, status, message, tweet_content, image }) => {
-  const [glitchText, setGlitchText] = useState("Processing...");
+  const [_, setGlitchText] = useState("Processing...");
   const [finalResult, setFinalResult] = useState<string | null>(null);
   
-  const checkResult = () => {
-    console.log(id, status)
-  }
-
   useEffect(() => {
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       setGlitchText(`Eligibility: ${Math.floor(Math.random() * 9) + 1}`);
     }, 150);
 
@@ -58,7 +54,7 @@ const EligibilityResult: FC<EligibilityMessage> = ({ id, status, message, tweet_
       <div className="mt-6 text-gray-400 text-xs text-center max-w-sm">
         <p>⚠️ This is <strong>not an official announcement from the Story team</strong>. This is just for fun! Please wait for the <em>official announcement and links</em> from the Story Protocol team.</p>
         <p className="mt-2">
-          🙌 If you are a <strong>real participant</strong> and not just a farmer, and you've truly <em>contributed and engaged</em>, be confident that your efforts will be <strong>recognized and appreciated by the team</strong>.
+          🙌 If you are a <strong>real participant</strong> and not just a farmer, and you&apos;ve truly <em>contributed and engaged</em>, be confident that your efforts will be <strong>recognized and appreciated by the team</strong>.
         </p>
       </div>
     </div>

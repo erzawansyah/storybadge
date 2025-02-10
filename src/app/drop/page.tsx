@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import EligibilityInput from "@/components/EligibilityInputForm";
 import EligibilityResult from "@/components/EligibilityResult";
 import { Address } from "thirdweb";
