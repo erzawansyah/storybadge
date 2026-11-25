@@ -1,130 +1,123 @@
-# Story Badge Checker
+# Story Odyssey Badge Checker
 
-A web application for checking and managing NFT badges. Easily view which badges you own or need, and check the status of your **Main NFT**. Built with **Next.js**, **thirdweb**, and **Tailwind CSS**.
+> **Status: archive.** The Story Odyssey testnet (chain 1516) has ended, so this is an archive. Live wallet checks are disabled; the site and this repository are kept as a record of the project and as a catalog of the Odyssey ecosystem badges.
 
-## Features
+A community-built web app that let participants of the [Story Protocol](https://www.story.foundation/) **Odyssey testnet** paste a wallet address and instantly see which ecosystem badges (NFTs) they held and which ones they were still missing.
 
-- **Badge Ownership Check**: Input your wallet address to view owned or unowned badges.
-- **Main NFT Check**: See if you own the primary NFT for the project.
-- **Filter Badges**: Easily filter badges by all, owned, or not owned.
-- **NFT Collections**: Browse NFT collections with links to purchase badges directly.
-- **Responsive Design**: Fully optimized for mobile and desktop.
+Archive site: <https://story-badge-checker.vercel.app/>
 
-## Demo
+## The problem
 
-Try it out here:  
-[Story Badge Checker](https://story-badge-checker.vercel.app/)
+During the Odyssey testnet (late 2024 to early 2025), participants collected badge NFTs by completing activities across roughly 30 ecosystem projects. Each badge lived in its own contract, and **there was no official checker**. To know where you stood, you had to open the explorer and look up each collection one by one.
 
-## Getting Started
+## The solution
 
-### Prerequisites
+A small Next.js app that does that lookup for you:
 
-- **Node.js** (v16 or later)
-- **npm** or **yarn**
-- A **thirdweb** client ID
-- Deployed NFT contract addresses
+- The list of badges (name, contract address, image) lives in a static file, [`public/badges.json`](public/badges.json). Adding a new badge is a one-line JSON change, no redeploy of logic needed.
+- For a given wallet, the app calls `balanceOf(owner)` on every badge contract on chain 1516 through the [thirdweb](https://thirdweb.com/) SDK (`readContract`) and runs the calls in parallel (see [`src/lib/thirdweb/index.ts`](src/lib/thirdweb/index.ts)).
+- It also checked the main Odyssey commemorative NFT and the "IP Community" commemorative NFT.
+- Results were shown as a grid of owned and missing badges, with filters (all / owned / not owned) and a "last updated" note for the badge list.
 
-### Installation
+The badge list was first stored in Supabase, then moved back to a static JSON file (February 2025) because a file was simpler and faster for a list that changed only occasionally.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/erzawansyah/storybadge.git
-   cd storybadge
-   ```
+A lighter side page, `/drop`, is a joke "airdrop eligibility checker" made for the community right before the mainnet airdrop. It has no on-chain logic: it maps the wallet address to one of 15 humorous messages with a share-on-X button, and clearly says it is not an official announcement.
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Impact
 
-3. Set up your `.env` file:
-   Create a `.env` or copy the `.env.example` file and add your **thirdweb** client ID and main NFT collection address:
-   ```env
-   NEXT_PUBLIC_THIRDWEB_CLIENT_ID=your_thirdweb_client_id
-   ```
+- Used by the Odyssey community to track badge progress while no official tool existed.
+- Acknowledged publicly by the official account of the Story ecosystem (now DATA):
+  - Official mention: <https://x.com/datafdn/status/1875622624635597133>
+  - Author's post: <https://x.com/mew294071/status/1888833346673012931>
 
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
+## Timeline
 
-5. Open the app in your browser at `http://localhost:3000`.
+| Date | Milestone |
+|---|---|
+| Nov 2024 | First version shipped in a day (27 Nov): badge list, `balanceOf` checks, filters, Vercel deploy. |
+| Nov to Dec 2024 | New badges added as projects launched them (OKX, Storyhunt, Sekai, Infinite Seas, and more). Community NFT collections page. |
+| Dec 2024 | Badge list moved to Supabase; experiments started on separate branches (see below). |
+| Feb 2025 | Badge list moved back to a static JSON file, IP Community NFT check added, `/drop` eligibility prank added (10 Feb). |
+| After Feb 2025 | Odyssey testnet shut down. The RPC and explorer for chain 1516 no longer respond, so live checks stopped working. |
+| Nov 2026 | Converted into an archive: wallet input disabled, badges shown as a catalog, images compressed. |
 
-### Deployment
+## What the archive site shows
 
-1. Push your changes to a Git repository.
-2. Connect the repository to **Vercel**.
-3. Set up environment variables in the Vercel dashboard:
-   - `NEXT_PUBLIC_THIRDWEB_CLIENT_ID`
-4. Deploy your project with a single click.
+- A banner on every page explaining that the testnet has ended.
+- The checker page with the wallet input **disabled** and an explanation of why.
+- The full badge list from `public/badges.json` as a **catalog** (name, image, contract address). No ownership status is shown, because it can no longer be verified on-chain.
+- `/drop` and `/collections` are left as they were.
 
----
+## Related experiments
 
-## Folder Structure
+These were never merged into `main` and are kept only for reference:
 
-Here is the folder structure of the project:
+- Branch [`story`](https://github.com/erzawansyah/storybadge/tree/story) (Dec 2024): a "create collection" page using the Story SDK (form, file upload, SPG NFT contract).
+- Branch [`v1.0.1`](https://github.com/erzawansyah/storybadge/tree/v1.0.1) (Dec 2024): "TCP/IP simulation", an on-chain activities checker, a transaction counter with wagmi, and AI agent character notes.
+- `storycontract` (private repository): a separate "MEW Web3 Lab" experiment around Story contracts. It only shares an early copy of this README and is planned to be archived.
 
-```
-storybadge/
-├── .next/                 # Build artifacts (auto-generated)
-├── node_modules/          # Node dependencies
-├── public/                # Static assets
-│   └── icon.png           # App icon
-├── src/                   # Source code
-│   ├── app/
-│   │   ├── collections/   # NFT collection pages
-│   │   │   ├── page.tsx   # Collections page
-│   │   │   └── layout.tsx # Layout for collections
-│   │   ├── globals.css    # Global styles
-│   │   └── page.tsx       # Main page
-│   ├── components/        # Reusable components
-│   │   ├── BadgeCards.tsx # Badge display component
-│   │   ├── Footer.tsx     # Footer component
-│   │   ├── Header.tsx     # Header component
-│   │   ├── InputAddressForm.tsx # Address input form
-│   │   ├── NFTChecker.tsx # Badge ownership checker
-│   │   └── OdysseyNFT.tsx # Main NFT checker
-│   ├── lib/               # Utility files
-│   │   ├── story/
-│   │   │   └── badges.ts  # Badge metadata
-│   │   └── thirdweb/      # Thirdweb utility functions
-│   │       └── index.ts   # Thirdweb API interactions
-├── .env                   # Environment variables
-├── .eslintrc.json         # Linter configuration
-├── .gitignore             # Git ignored files
-├── next.config.js         # Next.js configuration
-├── package.json           # Project metadata and dependencies
-├── postcss.config.mjs     # PostCSS configuration
-├── README.md              # Documentation
-├── tailwind.config.ts     # Tailwind CSS configuration
-└── tsconfig.json          # TypeScript configuration
+## Tech stack
+
+- [Next.js 15](https://nextjs.org/) (App Router), React 18, TypeScript
+- [Tailwind CSS 3](https://tailwindcss.com/)
+- [thirdweb v5](https://portal.thirdweb.com/typescript/v5) for contract reads
+- react-icons, react-markdown
+- Deployed on Vercel
+
+## Getting started
+
+Requirements: Node.js 20 or later, npm.
+
+```bash
+git clone https://github.com/erzawansyah/storybadge.git
+cd storybadge
+npm ci
+cp .env.example .env   # optional, see below
+npm run dev            # http://localhost:3000
 ```
 
----
+Other scripts:
 
-## Usage
+```bash
+npm run lint    # ESLint (next lint)
+npm run build   # production build
+npm run start   # serve the production build
+```
 
-1. Navigate to the main page to check badge ownership.
-2. Use the filter options to sort badges by all, owned, or not owned.
-3. Visit the **NFT Collections** page to browse and purchase available collections.
+### Configuration
 
----
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_THIRDWEB_CLIENT_ID` | No (archive mode) | thirdweb client ID used by `src/lib/thirdweb/index.ts`. The archive UI no longer calls it, but you need it if you reuse the `balanceOf` helper against a live chain. |
 
-## Technologies Used
+The build does not need any environment variable.
 
-- **Next.js**: Framework for building React applications.
-- **thirdweb**: Blockchain SDK for interacting with NFT contracts.
-- **Tailwind CSS**: Utility-first CSS framework for styling.
-- **Vercel**: Deployment platform.
+### Reusing the checker for another chain
 
----
+The live checker logic is small: `getStoryBadgesContract()` in `src/lib/thirdweb/index.ts` reads `balanceOf` for one wallet and one contract. To revive the idea for another network, change the chain ID in that helper, replace `public/badges.json` with the new list of contracts, and call the helper for each badge (the pre-archive version of `src/components/NFTChecker.tsx` in the git history, before November 2026, shows the full flow).
 
-## Contributing
+## Project structure
 
-Contributions are welcome! Feel free to fork this repository and submit a pull request with your improvements.
-
----
+```
+public/
+  badges.json          # badge catalog: id, name, contract_address, image_url
+  badges_images/       # badge images (WebP)
+  collections/         # images for the /collections page
+  drop/images/         # images for the /drop prank page
+src/
+  app/
+    page.tsx           # checker page (archive mode)
+    collections/       # community NFT collections
+    drop/              # joke eligibility checker
+    layout.tsx         # root layout with the archive banner
+  components/          # UI components (ArchiveBanner, NFTChecker, BadgeCards, ...)
+  lib/
+    story/             # contract addresses, badge loader, /drop messages
+    thirdweb/          # balanceOf helper (chain 1516)
+```
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+The code is released under the [MIT License](LICENSE).
+
+Badge images, collection artwork, and logos in `public/` belong to their respective projects in the Story ecosystem. They are included only to identify each badge and are not covered by the MIT License.
