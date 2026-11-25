@@ -15,19 +15,19 @@ const collections: NFTCollection[] = [
         name: 'We Are Frustated, Bro!',
         description: 'Why cope when you can collect? These cats scream what we all feel. Join the chaos—because frustration never looked this good!',
         collectionAddress: '0x000461Bb4E358c79d1A4A375B208343b96001313',
-        image: 'we-are-frustated.gif',
+        image: 'we-are-frustated.webp',
     },
     {
         name: "Chibi Cosmos Collection",
         description: "30 Adorable alien creatures from distant galaxies, each with unique traits and personalities to collect!",
         collectionAddress: "0xD5cb863Dfbb1B280D76b5d41E6a2c54F6C5302a3",
-        image: "chibi-cosmos.jpg",
+        image: "chibi-cosmos.webp",
     },
     {
         name: "I Need More F*cking IP",
         description: "A raw depiction of creative frustration with the phrase 'I Need More Fvcking IP,' resonating with creators everywhere.",
         collectionAddress: "0xCDf8c0C442Bc0d02E8c9F84632Ca727e56C04A38",
-        image: "i-need-more-ip.gif",
+        image: "i-need-more-ip.webp",
     }
 ];
 
