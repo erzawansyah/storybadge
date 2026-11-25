@@ -51,7 +51,7 @@ src/lib/thirdweb/         # balanceOf helper
 - TypeScript, functional React components, Tailwind classes for styling.
 - Client components start with `'use client'`.
 - Import alias `@/` maps to `src/`.
-- Images in `public/` must be WebP, resized to at most 512 px, and small: under 100 KB for still images, under 300 KB for animated WebP (cut frames or dimensions to get there). Exception: `public/badges_images/unleash.svg` is a vector badge and stays SVG. Do not add large PNG/GIF files.
+- Images in `public/` must be WebP, resized to at most 512 px, and small: under 100 KB for still images, under 300 KB for animated WebP (cut frames or dimensions to get there). Exceptions: `public/badges_images/unleash.svg` (vector badge), the SVG social icons, and `favicon.png`. Do not add large PNG/GIF files.
 - User-facing text and README are in English.
 - Keep the archive honest: anything shown about badges must come from `public/badges.json`, not from invented data.
 
