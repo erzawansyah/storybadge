@@ -3,19 +3,19 @@
         "id": 1,
         "name": "Wand Protocol",
         "contract_address": "0xfe5c197BAa5eD96a8A99689Be1A7F7b941E58Dd3",
-        "image_url": "/badges_images/wand.png"
+        "image_url": "/badges_images/wand.webp"
     },
     {
         "id": 2,
         "name": "D3X",
         "contract_address": "0x1Ce5AA796437A0fDD0127419a8517EfbD87aadF5",
-        "image_url": "/badges_images/d3x.png"
+        "image_url": "/badges_images/d3x.webp"
     },
     {
         "id": 4,
         "name": "Satori Badge",
         "contract_address": "0xCD62DbCB84Fcf7837FC813139A0D8F25b54033D9",
-        "image_url": "/badges_images/satori.png"
+        "image_url": "/badges_images/satori.webp"
     },
     {
         "id": 5,
@@ -27,7 +27,7 @@
         "id": 6,
         "name": "Color",
         "contract_address": "0xA9f7E75cBA8222A9096d50568FD001fB966cA4Cd",
-        "image_url": "/badges_images/color.png"
+        "image_url": "/badges_images/color.webp"
     },
     {
         "id": 7,
@@ -39,25 +39,25 @@
         "id": 8,
         "name": "Mahojin IP-Badge",
         "contract_address": "0x3Eb5Ebaf49512ef134470263Dc4b04732dcEF4Bf",
-        "image_url": "/badges_images/mahojin.png"
+        "image_url": "/badges_images/mahojin.webp"
     },
     {
         "id": 9,
         "name": "1Combo Story Badge",
         "contract_address": "0x5884F2396A8D5978b6A9fEC42a39ACF01A00C665",
-        "image_url": "/badges_images/1combo.png"
+        "image_url": "/badges_images/1combo.webp"
     },
     {
         "id": 10,
         "name": "Blockbook Badge",
         "contract_address": "0x916D9366dCC642D45075C7a62daef00b14A7460f",
-        "image_url": "/badges_images/blockbook.png"
+        "image_url": "/badges_images/blockbook.webp"
     },
     {
         "id": 11,
         "name": "Impossible Finance Testnet Badge",
         "contract_address": "0x2323AFf23019Dc366e4446172A983E828338A06B",
-        "image_url": "/badges_images/impossible.png"
+        "image_url": "/badges_images/impossible.webp"
     },
     {
         "id": 12,
@@ -69,85 +69,85 @@
         "id": 13,
         "name": "Spotlight Odyssey Badge",
         "contract_address": "0x605957BBC1A828D7883731d156E5D49DF173ce1D",
-        "image_url": "/badges_images/spotlight.png"
+        "image_url": "/badges_images/spotlight.webp"
     },
     {
         "id": 14,
         "name": "Standard Story Badge",
         "contract_address": "0xBB68C1d95922c491f280F1425D9Aac32635F08C3",
-        "image_url": "/badges_images/standard.png"
+        "image_url": "/badges_images/standard.webp"
     },
     {
         "id": 15,
         "name": "PiperX Odyssey Test Badge",
         "contract_address": "0x3038b1E8C67AF1225aadbb3136aaa7C32B18A539",
-        "image_url": "/badges_images/piperx.png"
+        "image_url": "/badges_images/piperx.webp"
     },
     {
         "id": 16,
         "name": "Verio Badge",
         "contract_address": "0x5B70682BDF31B29e6341CDE8961e9D65eA818bDd",
-        "image_url": "/badges_images/verio.png"
+        "image_url": "/badges_images/verio.webp"
     },
     {
         "id": 17,
         "name": "Singular IP-Badge",
         "contract_address": "0xf555b1f3E555172711C9C75182F855E0b0774b09",
-        "image_url": "/badges_images/singular.png"
+        "image_url": "/badges_images/singular.webp"
     },
     {
         "id": 18,
         "name": "Styreal x Story Odyssey",
         "contract_address": "0x22Da4cBdd97548AEF478E8f2FF5c7eEAe6E540fB",
-        "image_url": "/badges_images/styreal.png"
+        "image_url": "/badges_images/styreal.webp"
     },
     {
         "id": 19,
         "name": "Globkins Badges",
         "contract_address": "0x9a1dD2a41b6173168216d1c7521402C71365813f",
-        "image_url": "/badges_images/globkins.png"
+        "image_url": "/badges_images/globkins.webp"
     },
     {
         "id": 20,
         "name": "Koni Story",
         "contract_address": "0x71c8F1F9407CC2504a8025cbF600f8A7E6BeA21a",
-        "image_url": "/badges_images/koni.png"
+        "image_url": "/badges_images/koni.webp"
     },
     {
         "id": 21,
         "name": "Poster Badge",
         "contract_address": "0x88908e22d1249827Ab4c6bdebBdEcf577FCAA218",
-        "image_url": "/badges_images/poster.png"
+        "image_url": "/badges_images/poster.webp"
     },
     {
         "id": 22,
         "name": "Mycelium Badge",
         "contract_address": "0xF015EaCF4879B01CE63713373Ef9846d22b291d0",
-        "image_url": "/badges_images/mycelium.png"
+        "image_url": "/badges_images/mycelium.webp"
     },
     {
         "id": 23,
         "name": "JutsuWorld X Story Odyssey",
         "contract_address": "0xF9233C09EF1d56802A23b50D5DB027781ad18F29",
-        "image_url": "/badges_images/jutsuworld.png"
+        "image_url": "/badges_images/jutsuworld.webp"
     },
     {
         "id": 24,
         "name": "PunkgaMe X Story Odyssey",
         "contract_address": "0xdc96b7965c9CbE067359A1562D7E1F73b9809937",
-        "image_url": "/badges_images/punkgame.png"
+        "image_url": "/badges_images/punkgame.webp"
     },
     {
         "id": 25,
         "name": "Rightsfually Protection Badge",
         "contract_address": "0x928099c9dF3aCe2895c1870DB3c4898c17BCf609",
-        "image_url": "/badges_images/rightsfually.png"
+        "image_url": "/badges_images/rightsfually.webp"
     },
     {
         "id": 26,
         "name": "StoryHunt Badge",
         "contract_address": "0x22c3772f45268A68470Db15f4F73EC0310Ecac85",
-        "image_url": "/badges_images/storyhunt.png"
+        "image_url": "/badges_images/storyhunt.webp"
     },
     {
         "id": 27,
@@ -159,18 +159,18 @@
         "id": 28,
         "name": "Sekai Story Protocol Badge",
         "contract_address": "0x5B544469DcFE9AcFD56bFcf01b6E235B30153a78",
-        "image_url": "/badges_images/sekai.png"
+        "image_url": "/badges_images/sekai.webp"
     },
     {
         "id": 29,
         "name": "Infinite Seas Badge",
         "contract_address": "0xefe86da2f6B78b5ba9E004e9c9279Fa7000a5441",
-        "image_url": "/badges_images/infiniteseas.png"
+        "image_url": "/badges_images/infiniteseas.webp"
     },
     {
         "id": 30,
         "name": "Ablo Odyssey Badge",
         "contract_address": "0x5b6B76fE77F1F0e273D5156Fe405E2CedE175C44",
-        "image_url": "/badges_images/ablo.png"
+        "image_url": "/badges_images/ablo.webp"
     }
 ]

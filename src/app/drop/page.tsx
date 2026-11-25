@@ -64,7 +64,7 @@ const EligibilityPage = () => {
           {/* Ilustrasi gambar saat input */}
           <div className="flex justify-center my-6">
             <Image
-              src="/ip_token.png"
+              src="/ip_token.webp"
               alt="IP Token Logo"
               className="w-40 h-40 rounded-lg shadow-lg animate-zoomIn"
               width={160}
