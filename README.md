@@ -101,7 +101,7 @@ The live checker logic is small: `getStoryBadgesContract()` in `src/lib/thirdweb
 ```
 public/
   badges.json          # badge catalog: id, name, contract_address, image_url
-  badges_images/       # badge images (WebP)
+  badges_images/       # badge images (WebP, plus one SVG: unleash.svg)
   collections/         # images for the /collections page
   drop/images/         # images for the /drop prank page
 src/
