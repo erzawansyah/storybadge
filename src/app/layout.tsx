@@ -3,11 +3,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ArchiveBanner from "@/components/ArchiveBanner";
 
 
 export const metadata: Metadata = {
   title: "Story Odyssey Badge Checker",
-  description: "This tool allows you to check your NFT collection and see which Story Badges you own. Simply enter your wallet address and click the 'Check My Badges' button. Created by MEW Web3 Experiment.",
+  description: "Archive of the community-built badge checker for the Story Odyssey testnet (Nov 2024 to Feb 2025). The testnet has ended; the badge list is kept as a catalog. Created by MEW Web3 Experiment.",
 };
 
 const inter = Inter({
@@ -33,6 +34,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-gradient-to-b from-black via-gray-900 to-gray-800 antialiasedn flex flex-col min-h-dvh`}
       >
+        {/* Archive notice (Odyssey testnet has ended) */}
+        <ArchiveBanner />
+
         {/* Header */}
         <Header />
 
