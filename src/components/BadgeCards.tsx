@@ -4,34 +4,33 @@ import React from "react";
 
 interface BadgeCardProps {
     name: string;
-    owned: boolean;
     collectionAddress: string;
     image?: string;
 }
 
+/**
+ * Catalog card for a single Odyssey badge.
+ * Archive mode: no ownership status is shown because the testnet is gone.
+ */
 const BadgeCards: React.FC<BadgeCardProps> = ({
     name,
-    owned,
     collectionAddress,
     image,
 }) => {
     return (
         <div
-            className={`relative group p-3 md:p-4 rounded-xl border shadow-md text-white overflow-hidden 
-            transition-transform duration-300 hover:scale-105
-            ${owned ? 'bg-green-900/80 border-green-500' : 'bg-red-900/80 border-red-500'}`}
+            className="relative group p-3 md:p-4 rounded-xl border shadow-md text-white overflow-hidden
+            transition-transform duration-300 hover:scale-105 bg-gray-900/80 border-gray-700"
         >
-            {/* Gambar Badge - diperbesar */}
-            <div className="mx-auto mb-2 max-w-32 max-h-32 md:max-w-40 md:max-h-40 relative flex items-center justify-center">
+            <div className="mx-auto mb-2 w-28 h-28 md:w-36 md:h-36 relative flex items-center justify-center">
                 {image ? (
-                    <div className="max-w-64 h-64">
-                        <Image
-                            src={image}
-                            alt={name}
-                            fill
-                            className="aspect-square object-contain rounded-full transition-transform duration-300 group-hover:scale-110"
-                        />
-                    </div>
+                    <Image
+                        src={image}
+                        alt={name}
+                        fill
+                        sizes="(max-width: 768px) 112px, 144px"
+                        className="object-contain rounded-full transition-transform duration-300 group-hover:scale-110"
+                    />
                 ) : (
                     <div className="w-full h-full rounded-full flex items-center justify-center bg-gray-700">
                         <span className="text-4xl font-bold">
@@ -41,28 +40,14 @@ const BadgeCards: React.FC<BadgeCardProps> = ({
                 )}
             </div>
 
-            {/* Nama Badge (font lebih kecil) */}
             <h3 className="text-sm md:text-base font-semibold text-center">{name}</h3>
 
-            {/* Status kepemilikan (owned / not owned) */}
             <p
-                className={`mt-1 text-xs md:text-sm font-medium text-center 
-                ${owned ? 'text-green-300' : 'text-red-300'}`}
+                className="mt-1 text-[10px] md:text-xs text-gray-400 text-center font-mono break-all"
+                title={collectionAddress}
             >
-                {owned ? 'Owned' : 'Not Owned'}
+                {collectionAddress.slice(0, 6)}...{collectionAddress.slice(-4)}
             </p>
-
-            {/* Link ke Explorer */}
-            <div className="flex justify-center mt-2">
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={`https://explorer.story.foundation/collections/${collectionAddress}`}
-                    className="text-blue-400 hover:text-blue-600 underline text-xs md:text-sm transition-colors"
-                >
-                    See on Explorer
-                </a>
-            </div>
         </div>
     );
 };

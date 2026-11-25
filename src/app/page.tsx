@@ -11,7 +11,7 @@ const Home: NextPage = () => {
           Story Badge Checker
         </h1>
         <p className='text-center text-sm md:text-base mb-6'>
-          This tool allows you to check your NFT collection and see which Story Badges you own. Simply enter your wallet address and click the &apos;Check My Badges&apos; button.
+          From November 2024 to February 2025 this tool let Story Odyssey testnet participants check which ecosystem badges their wallet held. The testnet has ended, so this page is now an archive and a catalog of the badges.
         </p>
         <NFTChecker />
       </div>
